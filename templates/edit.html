@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Edit Task</title>
+{% endblock %}
+
+{% block body %}
+<h1>タスクを編集</h1>
+<form method="POST">
+    <label for="title">タイトル:</label>
+    <input type="text" id="title" name="title" value="{{ task.title }}" required />
+    <label for="details">詳細:</label>
+    <input type="text" id="details" name="details" value="{{ task.details }}" required />
+    <button type="submit">変更を保存</button>
+</form>
+<a href="/" role="button">キャンセル</a>
+{% endblock %}
