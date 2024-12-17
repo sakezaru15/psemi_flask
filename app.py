@@ -27,6 +27,16 @@ def delete(id):
     db.session.commit()
     return redirect('/')
 
+@app.route('/edit/<int:id>', methods=["GET", "POST"])
+def edit(id):
+    edit_task = Todo.query.get(id)
+    if request.method == "POST":
+        edit_task.title = request.form.get("title")
+        edit_task.details = request.form.get("details")
+        db.session.commit()
+        return redirect("/")
+    return render_template("edit.html", task=edit_task)
+
 class Todo(db.Model):
     id =db.Column(db.Integer, primary_key=True)
     title =db.Column(db.String(100))
